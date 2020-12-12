@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            let pwd;
+            let chr;
+            let pass = false;
+            let cont = false;
+            $(":password").keypress(() => {
+                pwd = document.getElementById("pwd").value;
+                if (pwd.length < 8) {
+                    $("#span2").text("enter minimum 8 charecters in password");
+                }
+                else {
+                    pass = true;
+                    $("#span2").text("");
+                }
+
+            });
+            $("#cno").keypress(() => {
+                chr = document.getElementById("cno").value;
+                if (isNaN(chr)) {
+                    $("#span1").text("please enter only number");
+                }
+                else if (chr.length < 10) {
+                    $("#span1").text("enter only 10 digit in contact");
+                }
+                else{
+                    $("#span1").text("");
+                    cont = true;
+                }
+            });
+            $("form").submit((ev)=>{
+                if(pass && cont){
+                    alert("your form has been submitted.");
+                }
+                else{
+                    ev.preventDefault();
+                    alert("fill the all fields.")
+                }
+            });
+        });
+    </script>
+    <title>Registration page</title>
+    <style>
+        body {
+            background-color: blueviolet;
+        }
+
+        h1 {
+            padding-top: 15px;
+            text-align: center;
+        }
+
+        .main {
+            background-color: white;
+            width: 30%;
+            margin-top: 5%;
+            margin-left: 35%;
+            border-radius: 5px;
+            padding-bottom: 20px;
+            padding-left: 20px;
+            padding-right: 20px;
+            box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        }
+
+        input {
+            width: 95%;
+            font-size: 20px;
+            border: none;
+            border-bottom: 2px solid rgb(129, 129, 129);
+            padding: 5px;
+        }
+
+        input:focus {
+            outline: 0;
+        }
+
+        button {
+            border-radius: 5px;
+            padding: 5px 5px;
+            width: 100%;
+            font-size: 20px;
+            cursor: pointer;
+            background-color: steelblue;
+            color: white;
+            border: none;
+        }
+
+        button:hover {
+            background-color: rgb(41, 69, 92);
+        }
+
+        button:focus {
+            outline: 0;
+        }
+
+        label {
+            font-size: 22px;
+            color: rgb(105, 105, 105);
+        }
+
+        span {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1>Registration</h1>
+        <hr style="text-align: center; margin-bottom: 10px;">
+        <form action="#" name="registration" id="registration">
+            <input type="text" name="fname" placeholder="Enter first name" required /><br /><br />
+            <input type="text" name="lastname" placeholder="Enter last name" required /><br /><br />
+            <!-- <input type="text" name="username" placeholder="Enter user name" required /><br /><br /> -->
+            <input id="pwd" type="password" placeholder="Enter password" required /><br /><span id="span2"></span><br />
+            <input id="cno" name="contact" type="text" placeholder="Enter contact no."
+                required /><br /><span id="span1"></span><br />
+            <input type="email" name="email" placeholder="Enter email" required /><br /><br /> 
+            <label>Address:</label><br />
+            <textarea id="address" rows="4" cols="60" required>
+        </textarea><br /><br />
+            <button type="submit">Register</button>
+        </form>
+    </div>
+</body>
+
+</html>
